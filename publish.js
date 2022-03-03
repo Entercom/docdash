@@ -520,7 +520,10 @@ exports.publish = function(taffyData, opts, tutorials) {
 
     data = helper.prune(data);
 
-    docdash.sort !== false && data.sort('longname, version, since');
+    if (docdash.sort !== false) {
+        let sortName = env.conf.templates.default.useLongnameInNav ? 'longname' : 'name';
+        data.sort(`${sortName}, version, since`);
+    }
     helper.addEventListeners(data);
 
     var sourceFiles = {};
