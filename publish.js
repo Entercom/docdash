@@ -397,6 +397,16 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                     itemsNav += "</ul>";
                 }
 
+                if (item.children && item.children.length) {
+                    itemsNav += "<ul class='children'>";
+                    item.children.forEach(child => {
+                        itemsNav += "<li data-type='tutorial'>";
+                        itemsNav += linktoFn('', child.name);
+                        itemsNav += "</li>";
+                    })
+                    itemsNav += "</ul>";
+                }
+
                 itemsSeen[item.longname] = true;
             }
             itemsNav += '</li>';
