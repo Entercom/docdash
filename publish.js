@@ -806,7 +806,18 @@ exports.publish = function(taffyData, opts, tutorials) {
         var html = view.render('tutorial.tmpl', tutorialData);
 
         // yes, you can use {@link} in tutorials too!
+
+        // handle escaped `@` characters `\@`.
+        // Approach copied from cnordhougen/jsdoc-escape-at
+        var replacementToken = '{REPLACE-AT}';
+        var tokenRegex = new RegExp(replacementToken, 'g');
+        var replaceEscapedAt = str => str.replace(/\\@/g, replacementToken);
+        var restoreAt = str => str.replace(tokenRegex, '@');
+
+        html = replaceEscapedAt(html);
         html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
+        html = restoreAt(html);
+
         fs.writeFileSync(tutorialPath, html, 'utf8');
     }
 
