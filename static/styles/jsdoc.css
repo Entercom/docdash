@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-weight: 300;
-  font-size: 48px;
+  font-size: 250%;
   margin: 1em 0 .5em;
 }
 
@@ -71,17 +71,17 @@ h1.page-title {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 200%;
   margin: 1.5em 0 .3em;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 175%;
   margin: 1.2em 0 .3em;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 140%;
   margin: 1em 0 .2em;
   color: #4d4e53;
 }
